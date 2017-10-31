@@ -33,7 +33,7 @@ $ vim inventory.ini
         
 > ##### v. Configure Proxy
 >> a. Configure http_proxy, https_proxy and no_proxy for proxy server <br/>  
->> Note:<br/> If you are using the same proxy to handle both HTTPS and HTTP traffic, enter the same URL as HTTP proxy.<br/> No proxy- Enter the following IP addresses as no proxy: 
+>> Note:<br/> If you are using the same proxy to handle both HTTPS and HTTP traffic, enter the same URL as HTTP proxy and HTTPS proxy.<br/> No proxy- Enter the following IP addresses as no proxy: 
 >>  - 127.0.0.1
 >>  - The IP of Ops Manager 
 >>  - The IP address of your BOSH Director. This is the first IP address next to Ops Manager IP address. If Ops Manager IP is 10.11.0.2 then BOSH Director IP will be 10.11.0.3             
