@@ -32,15 +32,12 @@ $ vim inventory.ini
 >> c. Update Ops Manager UI IP (Proxy IP that redirect UI traffic to Ops Manager IP)                
         
 > ##### v. Configure Proxy
->> If you are using the same proxy to handle both HTTPS and HTTP traffic, enter the same URL as HTTP proxy.     
->> No proxy: Enter the following IP addresses: 
+>> a. Configure http_proxy, https_proxy and no_proxy for proxy server <br/>  
+>> Note:<br/> If you are using the same proxy to handle both HTTPS and HTTP traffic, enter the same URL as HTTP proxy.<br/> No proxy- Enter the following IP addresses as no proxy: 
 >>  - 127.0.0.1
 >>  - The IP of Ops Manager 
->>  - The IP address of your BOSH Director. This is the first IP address next to Ops Manager IP address. If Ops Manager IP is 10.11.0.2 then BOSH Director IP will be 10.11.0.3 <br/>      
-
->> a. Configure http_proxy, https_proxy and no_proxy for proxy server        
+>>  - The IP address of your BOSH Director. This is the first IP address next to Ops Manager IP address. If Ops Manager IP is 10.11.0.2 then BOSH Director IP will be 10.11.0.3             
 >> **Note: The values in the No Proxy field must be comma-delimited, with no spaces or quotation marks between values. Example: 127.0.0.1,10.11.0.2,10.11.0.3**                
-
 
 > ##### vi. Elastic runtime configurations
 >> a. Update elastic runtime version, API download link and pcf_elastic_runtime_SHA256, if you want different version [Pivotal Network](https://network.pivotal.io/)        
