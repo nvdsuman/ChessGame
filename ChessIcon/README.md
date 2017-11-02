@@ -52,8 +52,7 @@ $ vim inventory.ini
 
 
 #### 2. To deploy CF using BOSH CLI v2         
-$ ansible-playbook deploy_bosh_director.yml -i inventory.ini
-##### Note: CF deploy will take around 2 Hours**
+$ ansible-playbook deploy_bosh_director.yml -i inventory.ini <br /> **Note: CF deploy will take around 2 Hours**
 
 > **To see verbose output**
 >> $ ansible-playbook deploy_bosh_director.yml -i inventory.ini -vvvv           
