@@ -51,9 +51,9 @@ $ vim inventory.ini
 2. copy it into cloud-foundry-automation/scripts/cf_ansible        
 
 
-#### 2. To deploy CF using BOSH CLI v2**         
-$ ansible-playbook deploy_bosh_director.yml -i inventory.ini**                           
-**Note: CF deploy will take around 2 Hours**
+#### 2. To deploy CF using BOSH CLI v2         
+$ ansible-playbook deploy_bosh_director.yml -i inventory.ini
+##### Note: CF deploy will take around 2 Hours**
 
 > **To see verbose output**
 >> $ ansible-playbook deploy_bosh_director.yml -i inventory.ini -vvvv           
@@ -64,7 +64,7 @@ $ ansible-playbook deploy_bosh_director.yml -i inventory.ini**
 > **To cleanup CF deployment**   
 >> $ ansible-playbook bosh_cleanup.yml -i inventory.ini
 
-#### After successfully deployment of CloudFoundry :   
+### After successfully deployment of CloudFoundry :   
 
 #### 3. source CF BOSH Environments
 $ source cf_bosh                                  
@@ -75,7 +75,7 @@ $ bosh env
 #### 5. To see running instances
 $ bosh vms         
 
-**You are now ready to deploy your first app!**           
+### You are now ready to deploy your first app!
  
 #### 6. Deploy to Cloud Foundry (Hello World)
 $ git clone https://github.com/vchrisb/cf-helloworld $PWD/workspace/cf-helloworld          
