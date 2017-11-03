@@ -47,7 +47,7 @@ $ vim inventory.ini
 
 
 **Note: For Cisco's ACI add-ons**
-1. Download the release tarball to jump VM from https://drive.google.com/open?id=0B882PS8bAm_9M0tSazJQMnhrTlk , file aci-containers-release-0.0.3.tgz            
+1. Download the latest Cisco's ACI add-ons release tarball to jump VM
 2. Copy it into cloud-foundry-automation/scripts/cf_ansible
 3. Update cloud-foundry-automation/operations/cloud-vars.yml with the following values:
 > - apic_dvs: vmware0
