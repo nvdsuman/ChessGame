@@ -6,7 +6,7 @@ class Chess implements ActionListener
 	static JButton[][] btn = new JButton[8][];
 	static JFrame frm;
 	static int x1, y1, x2, y2, click;
-	static String msg;
+	static String msg, expectedMove = "white";
 	static String[][] color = new String[8][];
 	static String[][] name = new String[8][];
 	static ImageIcon sainik_wh = new ImageIcon("ChessIcon/sainik_wh.png");
@@ -319,6 +319,11 @@ class Chess implements ActionListener
 			JOptionPane.showMessageDialog(frm, "Invalid Move.....");
 			click = 0;
 		}
+		else if(click == 1 && !color[x1][y1].equals(expectedMove)){
+			//System.out.println(color[x1][y1] + " == " + expectedMove + " : " + color[x1][x2].equals(expectedMove));
+			JOptionPane.showMessageDialog(frm, "It's " + expectedMove.toUpperCase() + " turn.");
+			click = 0;
+		}
 		else
 		{	
 			if(click == 1){
@@ -328,41 +333,46 @@ class Chess implements ActionListener
 			}
 			if(click == 2)
 			{
+				boolean moved = false;
 				removeDotIcon();
 				if(msg.equals("SAINIK"))
 				{
-					moveSainik();
+					moved = moveSainik();
 				}
 				else if(msg.equals("HATHI"))
 				{
-					moveHathi();
+					moved = moveHathi();
 				}
 				else if(msg.equals("UANT"))
 				{
-					moveUant();
+					moved = moveUant();
 				}
 				else if(msg.equals("MANTRI"))
 				{
-					moveMantri();
+					moved = moveMantri();
 				}
 				else if(msg.equals("GHODA"))
 				{
-					moveGhoda();
+					moved = moveGhoda();
 				}
 				else if(msg.equals("RAJA"))
 				{
-					moveRaja();
+					moved = moveRaja();
+				}
+				if(moved){
+				    expectedMove = expectedMove.equals("white") ? "black" : "white";
 				}
 			}
 		}
 		if(click == 2)
 			click = 0;
 	}
-	public static void moveRaja()
+	public static boolean moveRaja()
 	{
 		if((color[x1][y1].equals(color[x2][y2]) && !name[x2][y2].equals("bl")) || !(abs(x1-x2) <= 1 && abs(y1-y2) <= 1)) 
 		{
 			JOptionPane.showMessageDialog(frm, "Invalid Move.....");
+			return false;
 		}
 		else
 		{
@@ -371,13 +381,15 @@ class Chess implements ActionListener
 			name[x1][y1] = "bl";
 			name[x2][y2] = "RAJA";
 			color[x2][y2] = color[x1][y1];
+			return true;
 		}
 	}
-	public static void moveGhoda()
+	public static boolean moveGhoda()
 	{
 		if((color[x1][y1].equals(color[x2][y2]) && !name[x2][y2].equals("bl")) || !(abs(x1-x2) == 2 && abs(y1-y2) == 1 || abs(x1-x2) == 1 && abs(y1-y2) == 2)) 
 		{
 			JOptionPane.showMessageDialog(frm, "Invalid Move.....");
+			return false;
 		}
 		else
 		{
@@ -386,14 +398,16 @@ class Chess implements ActionListener
 			name[x1][y1] = "bl";
 			name[x2][y2] = "GHODA";
 			color[x2][y2] = color[x1][y1];
+			return true;
 		}
 	
 	}
-	public static void moveMantri()
+	public static boolean moveMantri()
 	{
 		if((color[x1][y1].equals(color[x2][y2]) && !name[x2][y2].equals("bl")) || (abs(x1-x2) != abs(y1-y2) && x1 != x2 && y1 != y2) || isNotEmpty()) 
 		{
 			JOptionPane.showMessageDialog(frm, "Invalid Move.....");
+			return false;
 		}
 		else
 		{
@@ -403,13 +417,15 @@ class Chess implements ActionListener
 			name[x1][y1] = "bl";
 			name[x2][y2] = "MANTRI";
 			color[x2][y2] = color[x1][y1];
+			return true;
 		}
 	}
-	public static void moveUant()
+	public static boolean moveUant()
 	{
 		if((color[x1][y1].equals(color[x2][y2]) && !name[x2][y2].equals("bl")) || abs(x1-x2) != abs(y1-y2) || isNotEmpty()) 
 		{
 			JOptionPane.showMessageDialog(frm, "Invalid Move.....");
+			return false;
 		}
 		else
 		{
@@ -418,13 +434,15 @@ class Chess implements ActionListener
 			name[x1][y1] = "bl";
 			name[x2][y2] = "UANT";
 			color[x2][y2] = color[x1][y1];
+			return true;
 		}
 	}
-	public static void moveHathi()
+	public static boolean moveHathi()
 	{
 		if((color[x1][y1].equals(color[x2][y2]) && !name[x2][y2].equals("bl")) || (x1 != x2 && y1 != y2) || isNotEmpty()) 
 		{
 			JOptionPane.showMessageDialog(frm, "Invalid Move.....");
+			return false;
 		}
 		else
 		{
@@ -433,9 +451,10 @@ class Chess implements ActionListener
 			name[x1][y1] = "bl";
 			name[x2][y2] = "HATHI";
 			color[x2][y2] = color[x1][y1];
+			return true;
 		}
 	}
-	public static void moveSainik()
+	public static boolean moveSainik()
 	{
 		if(color[x1][y1].equals("white"))
 		{
@@ -458,6 +477,7 @@ class Chess implements ActionListener
 			else 
 			{
 				JOptionPane.showMessageDialog(frm, "Invalid Move.....");
+				return false;
 			}
 		}	
 		else if(color[x1][y1].equals("black"))
@@ -481,8 +501,10 @@ class Chess implements ActionListener
 			else
 			{
 				JOptionPane.showMessageDialog(frm, "Invalid Move.....");
+				return false;
 			}
-		}	
+		}
+		return true;	
 	}
 	public static int abs(int x)
 	{
