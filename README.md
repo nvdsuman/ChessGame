@@ -1,3 +1,5 @@
+![alt text](https://github.com/nvdsuman/ChessGame/blob/master/chess_board_icon.png)
+
 # ChessGame
 
 Prerequisites:
